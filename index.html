@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Mba - AI-Enhanced Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9c27b0;
+            --secondary: #ff1744;
+            --accent: #00e676;
+            --dark: #121212;
+            --card: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            padding-bottom: 70px;
+        }
+
+        .header {
+            padding: 1.5rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            font-family: 'Mountains of Christmas', cursive;
+        }
+
+        .disclaimer {
+            background: rgba(0,0,0,0.5);
+            padding: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+            border-left: 4px solid var(--accent);
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            margin-bottom: 1rem;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #2196f3, var(--primary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+
+        .search-container {
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--dark);
+            z-index: 100;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 25px;
+            border: none;
+            background: var(--card);
+            color: white;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem;
+            gap: 0.5rem;
+            scrollbar-width: none;
+        }
+
+        .category-pill {
+            background: var(--card);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .category-pill.active {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .action-btn {
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--card);
+            margin: 1rem;
+            border-radius: 15px;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--card);
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+        }
+
+        .support-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .support-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Jerry Mba</h1>
+        <p>AI-Enhanced Portfolio Showcase</p>
+    </header>
+
+    <div class="disclaimer">
+        All projects showcased here are developed using AI-enhanced workflows and tools
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item">
+                <i class="fas fa-store-alt fa-2x"></i>
+                <h3>Small Business Suite</h3>
+                <p>Complete business management solution</p>
+            </div>
+            <div class="carousel-item">
+                <i class="fas fa-gamepad fa-2x"></i>
+                <h3>Unity 3D Game</h3>
+                <p>AI-powered adventure game</p>
+            </div>
+            <div class="carousel-item">
+                <i class="fas fa-tasks fa-2x"></i>
+                <h3>Enterprise Workflow</h3>
+                <p>Smart task management system</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search projects...">
+    </div>
+
+    <div class="categories">
+        <span class="category-pill active">All</span>
+        <span class="category-pill">Business Tools</span>
+        <span class="category-pill">Games</span>
+        <span class="category-pill">Mobile Apps</span>
+        <span class="category-pill">Web Apps</span>
+        <span class="category-pill">3D Models</span>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <i class="fas fa-store"></i>
+            <h3>SmartBiz Manager</h3>
+            <p>Small business management suite</p>
+            <button class="action-btn">Learn More</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-tasks"></i>
+            <h3>WorkFlow Pro</h3>
+            <p>Enterprise task management</p>
+            <button class="action-btn">Learn More</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-gamepad"></i>
+            <h3>Cyber Quest</h3>
+            <p>Unity 3D Adventure Game</p>
+            <button class="action-btn">Play Now</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-cube"></i>
+            <h3>3D Asset Pack</h3>
+            <p>Game-ready 3D models</p>
+            <button class="action-btn">View Models</button>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+    </div>
+
+    <div class="support-links">
+        <a href="#" class="support-btn"><i class="fas fa-coffee"></i> Buy Me a Coffee</a>
+        <a href="#" class="support-btn"><i class="fas fa-shopping-cart"></i> Gumroad</a>
+        <a href="#" class="support-btn"><i class="fas fa-heart"></i> Ko-fi</a>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i></a>
+        <a href="#" class="nav-item"><i class="fas fa-folder"></i></a>
+        <a href="#" class="nav-item"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="nav-item"><i class="fas fa-user"></i></a>
+    </nav>
+
+    <script>
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % items.length;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(nextSlide, 3000);
+
+        // Search functionality
+        const searchBar = document.querySelector('.search-bar');
+        const cards = document.querySelectorAll('.card');
+
+        searchBar.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Category pills
+        const pills = document.querySelectorAll('.category-pill');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
